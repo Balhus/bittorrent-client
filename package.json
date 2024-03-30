@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
-    "run": "npm run lint && nodemon dist/index.js"
+    "run": "npx tsc && npm run lint && nodemon dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,11 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.30",
     "express": "^4.19.1",
+    "parse-torrent": "^9.1.5",
     "typescript": "^5.4.3"
   },
   "devDependencies": {
+    "@types/parse-torrent": "^5.8.7",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "eslint": "^8.57.0"
