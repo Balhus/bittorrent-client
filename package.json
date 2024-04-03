@@ -2,11 +2,11 @@
   "name": "bittorrent-client",
   "version": "1.0.0",
   "description": "Bit Torrent client for the purpose of learning",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
-    "run": "npx tsc && npm run lint && nodemon dist/index.js"
+    "run": "node dist/index.js"
   },
   "repository": {
     "type": "git",
