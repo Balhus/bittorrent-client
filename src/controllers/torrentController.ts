@@ -5,11 +5,31 @@ import express, {Request, Response} from 'express';
 
 import { Torrent } from '../types/Torrent';
 import { TorrentFile } from '../types/interfaces/TorrentFile';
-import ParseTorrent from 'parse-torrent';
 
 // const parseTorrent = require('parse-torrent');
 export const readTorrent = (req: Request, res: Response) => {
-    res.json(openFile());
+    const torrentFile = openFile();
+
+    if(torrentFile && torrentFile.announce?.length > 0){
+        const torrent = new Torrent(torrentFile);
+        const port: number = 6881;
+        const trackerUrl = torrent.buildTrackerURL(port);
+        
+        fetch(trackerUrl)
+        .then(response => {
+            if (!response.ok) {
+              throw new Error('Hubo un problema con la respuesta del servidor.');
+            }
+
+            return response.json();
+          })
+        .then(data => {
+            // Manejar los datos recibidos
+            console.log(data);
+        })        
+        .catch(error => console.error(error))
+    }
+    // res.json(torrentFile);
 }
 
 const openFile = () => {

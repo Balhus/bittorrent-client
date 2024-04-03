@@ -1,6 +1,6 @@
 export interface TorrentFile {
-    announce: string[] | undefined;
-    infoHash: string | undefined;
+    announce: string[];
+    infoHash: string;
     pieceHashes: string[];
     pieceLength: number;
     length: number;
