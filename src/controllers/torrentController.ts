@@ -25,9 +25,13 @@ export const readTorrent = (req: Request, res: Response) => {
           })
         .then(data => {
             // Manejar los datos recibidos
+            res.json(data);
             console.log(data);
         })        
-        .catch(error => console.error(error))
+        .catch(error => {
+            res.json(error);
+            console.error(error)
+        })
     }
     // res.json(torrentFile);
 }
